@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Job Listings</h2>
+<form method="get" class="row mb-3">
+  <div class="col-md-4"><input name="keyword" placeholder="Keyword" class="form-control"></div>
+  <div class="col-md-4"><input name="location" placeholder="Location" class="form-control"></div>
+  <div class="col-md-4"><button class="btn btn-primary">Search</button></div>
+</form>
+{% for job in jobs %}
+<div class="card mb-2">
+  <div class="card-body">
+    <h5>{{ job.title }}</h5>
+    <p>{{ job.company }} - {{ job.location }} - ₹{{ job.salary }}</p>
+    <a href="{{ url_for('main.apply', job_id=job.id) }}" class="btn btn-success">Apply</a>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

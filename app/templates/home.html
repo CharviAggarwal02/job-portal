@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+  <h1 class="display-4">Welcome to JobPortal</h1>
+  <p class="lead">Find your dream job or the perfect candidate in seconds.</p>
+  <a href="{{ url_for('main.jobs') }}" class="btn btn-primary btn-lg mt-3">Browse Jobs</a>
+</div>
+{% endblock %}

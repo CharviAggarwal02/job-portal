@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>My Job Posts</h2>
+<a href="{{ url_for('main.post_job') }}" class="btn btn-primary mb-3">Post New Job</a>
+<ul class="list-group">
+    {% for job in jobs %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+            <strong>{{ job.title }}</strong> - {{ job.location }}
+        </div>
+        <form action="{{ url_for('main.delete_job', job_id=job.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

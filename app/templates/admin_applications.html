@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>All Applications</h2>
+<table class="table table-bordered">
+  <thead><tr><th>Applicant</th><th>Job</th><th>Company</th><th>Resume</th><th>Date</th></tr></thead>
+  <tbody>
+    {% for app in applications %}
+    <tr>
+      <td>{{ app.user.username }}</td>
+      <td>{{ app.job.title }}</td>
+      <td>{{ app.job.company }}</td>
+      <td>
+        {% if app.resume %}
+        <a href="{{ url_for('main.download_resume', filename=app.resume) }}" class="btn btn-sm btn-info">Download</a>
+        {% else %} No Resume {% endif %}
+      </td>
+      <td>{{ app.applied_on.strftime('%Y-%m-%d') }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

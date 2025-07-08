@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<h4>Users</h4>
+<table class="table">
+  <thead><tr><th>Email</th><th>Role</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td><a href="{{ url_for('main.delete_user', user_id=user.id) }}" class="btn btn-sm btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h4>Jobs</h4>
+<table class="table">
+  <thead><tr><th>Title</th><th>Company</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for job in jobs %}
+    <tr>
+      <td>{{ job.title }}</td>
+      <td>{{ job.company }}</td>
+      <td><a href="{{ url_for('main.admin_delete_job', job_id=job.id) }}" class="btn btn-sm btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
